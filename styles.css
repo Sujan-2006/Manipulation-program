@@ -1,0 +1,283 @@
+/* ===================================
+   BASIC RESET & VARIABLES
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light Theme Colors - Purple Palette */
+    --light-bg: #f8f7fc;
+    --light-text: #2d2b3a;
+    --light-card-bg: #ffffff;
+    --light-button-bg: #7c3aed;
+    --light-button-hover: #6d28d9;
+    --light-accent: #a78bfa;
+    
+    /* Dark Theme Colors - Deep Purple Palette */
+    --dark-bg: #1e1b29;
+    --dark-text: #e9e7f0;
+    --dark-card-bg: #2d2838;
+    --dark-button-bg: #a78bfa;
+    --dark-button-hover: #c4b5fd;
+    --dark-accent: #7c3aed;
+}
+
+/* ===================================
+   BODY STYLES
+   =================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: all 0.4s ease-in-out;
+    
+    /* Default Light Theme */
+    background: linear-gradient(135deg, #f8f7fc 0%, #ede9fe 100%);
+    color: var(--light-text);
+}
+
+/* ===================================
+   CONTAINER
+   =================================== */
+.container {
+    max-width: 700px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    transition: all 0.4s ease-in-out;
+}
+
+/* ===================================
+   TYPOGRAPHY
+   =================================== */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.4s ease-in-out;
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--light-text);
+    transition: color 0.4s ease-in-out;
+}
+
+/* ===================================
+   BUTTON STYLES
+   =================================== */
+.theme-btn {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 30px;
+    padding: 15px 30px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.theme-btn:hover::before {
+    left: 100%;
+}
+
+.theme-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4);
+}
+
+.theme-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+}
+
+/* ===================================
+   THEME STATUS DISPLAY
+   =================================== */
+.theme-status {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(167, 139, 250, 0.05) 100%);
+    border: 2px solid rgba(124, 58, 237, 0.1);
+    transition: all 0.4s ease-in-out;
+}
+
+.theme-status p {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--light-text);
+}
+
+#currentTheme {
+    font-weight: 700;
+    color: var(--light-button-bg);
+    transition: all 0.4s ease-in-out;
+    display: inline-block;
+}
+
+/* ===================================
+   INFO CARD
+   =================================== */
+.info-card {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.03) 0%, rgba(167, 139, 250, 0.03) 100%);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    transition: all 0.4s ease-in-out;
+}
+
+.info-card h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: var(--light-button-bg);
+}
+
+.info-card ul {
+    list-style-position: inside;
+    line-height: 2;
+}
+
+.info-card li {
+    font-size: 1rem;
+    color: var(--light-text);
+}
+
+.info-card li::marker {
+    color: var(--light-accent);
+}
+
+/* ===================================
+   DARK THEME STYLES
+   =================================== */
+body.dark-theme {
+    background: linear-gradient(135deg, #1e1b29 0%, #2d2838 100%);
+    color: var(--dark-text);
+}
+
+body.dark-theme .container {
+    background: rgba(45, 40, 56, 0.9);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+body.dark-theme h1 {
+    background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-theme p {
+    color: var(--dark-text);
+}
+
+body.dark-theme .theme-btn {
+    background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+    box-shadow: 0 8px 20px rgba(167, 139, 250, 0.3);
+}
+
+body.dark-theme .theme-btn:hover {
+    box-shadow: 0 12px 30px rgba(167, 139, 250, 0.4);
+}
+
+body.dark-theme .theme-status {
+    background: rgba(167, 139, 250, 0.1);
+    border: 2px solid rgba(167, 139, 250, 0.2);
+}
+
+body.dark-theme .theme-status p {
+    color: var(--dark-text);
+}
+
+body.dark-theme #currentTheme {
+    color: var(--dark-button-bg);
+}
+
+body.dark-theme .info-card {
+    background: rgba(167, 139, 250, 0.08);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+body.dark-theme .info-card h2 {
+    color: var(--dark-button-bg);
+}
+
+body.dark-theme .info-card li {
+    color: var(--dark-text);
+}
+
+body.dark-theme .info-card li::marker {
+    color: var(--dark-accent);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    .theme-btn {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .container {
+        padding: 20px 15px;
+    }
+}
